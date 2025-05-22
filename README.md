@@ -10,20 +10,24 @@ A hexagonal-architecture system for augmenting Integrated Postsecondary Educatio
 
 **IPEDS-Aug** is a modular data-augmentation framework designed to:
 
-- Ingest core IPEDS tables (HD, IC, IC_CAMPUSES).
-- Scrape and integrate unstructured web-text (department pages, job postings, mission statements).
+- Ingest core IPEDS institutional characteristics tables (HD, IC, IC_CAMPUSES, etc.).
+- Augment IPEDS data with institutional characteristics from other sources (e.g., NCAE-C, IC-CAE, LibGuides).
+- Scrape and integrate unstructured text from institution webpages and document files.
 - Store and query tabular and textual data via DuckDB (with FTS & VSS extensions).
 - Support port interfaces and adapter-driven implementations for easy swapping of components (e.g., DuckDB ↔ SQLite, HTTP scrapers, vector stores).
+- Provide full-text and semantic search capabilities for enhanced data retrieval.
+- Integrate with Model Context Protocol (MCP) for managing and querying large language models (LLMs) and vector stores.
 
 ---
 
 ## 🚀 Getting Started
 
 1. **Clone the repo**
+
    ```bash
    git clone https://github.com/your-org/ipeds-aug.git
    cd ipeds-aug
-````
+   ````
 
 2. **Install dependencies** (TBD)
 
@@ -46,26 +50,26 @@ A hexagonal-architecture system for augmenting Integrated Postsecondary Educatio
 
 ## 📁 Project Structure
 
-```
-.ipeds-aug/
-├── src/
-│   ├── adapters/           # Adapter implementations (e.g., DuckDB, HTTP scrapers)
-│   ├── domain/             # Core domain models & port interfaces
-│   ├── entrypoints/        # CLI, API or other application entrypoints
-│   ├── service_layer/      # Business logic / orchestration
-│   ├── config.py           # Global configuration
-│   └── __init__.py
-├── data/                   # Raw, interim, and processed data files
-│   ├── raw/
-│   ├── interim/
-│   └── processed/
-├── docs/                   # Design docs, architecture notes, data dictionaries
-├── tests/                  # Unit & integration tests
-├── Makefile                # Common tasks (lint, test, build)
-├── requirements.txt        # Python dependencies
-├── requirements_dev.txt    # Dev & testing dependencies
-└── README.md               # This file
-```
+   ```plaintext
+   ipeds-aug/
+   ├── src/
+   │   ├── adapters/           # Adapter implementations (e.g., DuckDB, HTTP scrapers)
+   │   ├── domain/             # Core domain models & port interfaces
+   │   ├── entrypoints/        # CLI, API or other application entrypoints
+   │   ├── service_layer/      # Business logic / orchestration
+   │   ├── config.py           # Global configuration
+   │   └── __init__.py
+   ├── data/                   # Raw, interim, and processed data files
+   │   ├── raw/
+   │   ├── interim/
+   │   └── processed/
+   ├── docs/                   # Design docs, architecture notes, data dictionaries
+   ├── tests/                  # Unit & integration tests
+   ├── Makefile                # Common tasks (lint, test, build)
+   ├── requirements.txt        # Python dependencies
+   ├── requirements_dev.txt    # Dev & testing dependencies
+   └── README.md               # This file
+   ```
 
 ---
 
